@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+ 
+ 
+<hibernate-configuration>
+    <session-factory>
+       <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+    
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">12345678</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/DEMO</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">false</property>
+        <mapping class="com.airline.model.User"/>
+        <mapping class="com.airline.model.Flight"/>
+        <mapping class="com.airline.model.Cities"/>
+        <mapping class="com.airline.model.Ticket"/>
+        <mapping class="com.airline.model.Passenger"/>
+        <mapping class="com.airline.model.SpecialService"/>
+                <mapping class="com.airline.model.Visa"/>
+        
+    </session-factory>
+</hibernate-configuration>

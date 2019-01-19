@@ -1,0 +1,77 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>MainController</servlet-name>
+  	<display-name>MainController</display-name>
+  	<description></description>
+  	<servlet-class>com.airline.controller.MainController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FlightController</servlet-name>
+  	<display-name>FlightController</display-name>
+  	<description></description>
+  	<servlet-class>com.airline.controller.FlightController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FlightDetailsController</servlet-name>
+  	<display-name>FlightDetailsController</display-name>
+  	<description></description>
+  	<servlet-class>com.airline.controller.FlightDetailsController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>TicketGenerateController</servlet-name>
+  	<display-name>TicketGenerateController</display-name>
+  	<description></description>
+  	<servlet-class>com.airline.controller.TicketGenerateController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>InitializerController</servlet-name>
+  	<display-name>InitializerController</display-name>
+  	<description></description>
+  	<servlet-class>com.airline.controller.InitializerController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>TicketDisplayController</servlet-name>
+  	<display-name>TicketDisplayController</display-name>
+  	<description></description>
+  	<servlet-class>com.airline.controller.TicketDisplayController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CheckGuestController</servlet-name>
+  	<display-name>CheckGuestController</display-name>
+  	<description></description>
+  	<servlet-class>com.airline.controller.CheckGuestController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MainController</servlet-name>
+  	<url-pattern>/MainController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FlightController</servlet-name>
+  	<url-pattern>/FlightController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FlightDetailsController</servlet-name>
+  	<url-pattern>/FlightDetailsController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TicketGenerateController</servlet-name>
+  	<url-pattern>/TicketGenerateController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>InitializerController</servlet-name>
+  	<url-pattern>/InitializerController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TicketDisplayController</servlet-name>
+  	<url-pattern>/TicketDisplayController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckGuestController</servlet-name>
+  	<url-pattern>/CheckGuestController</url-pattern>
+  </servlet-mapping>
+</web-app>
