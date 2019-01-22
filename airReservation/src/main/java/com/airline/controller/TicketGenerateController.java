@@ -182,6 +182,20 @@ public class TicketGenerateController extends HttpServlet {
 			v.setVisaId(visaId);
 			ticket.setVisa(v);
 			
+			session.setAttribute("ticket", ticket);
+
+			if(ticket.getStatus().contains("Reserve")) {
+				TicketBO ticketBO=new TicketBO();
+				boolean bookingStatus=ticketBO.createTicket(ticket);
+				if(bookingStatus) {
+				dispatch=request.getRequestDispatcher("views/reservebooksuccess.jsp");
+				dispatch.forward(request, response);
+			}
+			}
+				else {
+					System.out.println("not updated");
+				}
+			
 			float payment = (Float) session.getAttribute("price");
 			float actualPayment = payment*passenger;
 			System.out.println(actualPayment);
@@ -194,8 +208,12 @@ public class TicketGenerateController extends HttpServlet {
 			
 			
 			session.setAttribute("ticket", ticket);
+			
+			
+			
 			dispatch = request.getRequestDispatcher("views/confirmpayment.jsp");
 			dispatch.forward(request, response);
+		
 		}
 	}
 }

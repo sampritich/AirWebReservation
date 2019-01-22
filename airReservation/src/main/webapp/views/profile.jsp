@@ -239,7 +239,7 @@ span.psw {
  <a href='TicketDisplayController?profile=cupons'>Cupons</a>
 
   <a href="#">Contact</a>
-   <a href='TicketDisplayController?profile=cupons'>Logout</a>
+   <a href='TicketDisplayController?profile=logout'>Logout</a>
   
  
 </div>

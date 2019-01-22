@@ -169,7 +169,10 @@ public class FlightDetailsController extends HttpServlet {
 			session.setAttribute("selectedflight", flight);
 			
 			BookingCheck bookingCheck = new BookingCheck();
+			
+			
 			int passengercount=(Integer)session.getAttribute("passenger");
+			
 			
 			
 			ticket.setFlight(flight);
@@ -192,23 +195,31 @@ public class FlightDetailsController extends HttpServlet {
 					System.out.println("to block ");
 
 					if (status) {
+						session.setAttribute("ticket", ticket);
 
-						boolean bookingStatus=ticketBO.createTicket(ticket);
+						
+						dispatch=request.getRequestDispatcher("views/passenger.jsp");
+			        	 dispatch.forward(request, response);
+
+						//boolean bookingStatus=ticketBO.createTicket(ticket);
 
 			        	 
 
-			        	 if(bookingStatus) {
+			        	// if(bookingStatus) {
 
-			        		 System.out.println("successfully update");
-			        		 SeatBookBO seat=new SeatBookBO();
-			        		 boolean seatupdate=false;
-			        		 if(button.contains("Economy")) {
+			        		 //System.out.println("successfully update");
+			        		// SeatBookBO seat=new SeatBookBO();
+			        		 //boolean seatupdate=false;
+			        		/* if(button.contains("Economy")) {
 			        			System.out.println(button); 
 			        			
-			        			String type="Economy";
-			        			seatupdate=seat.updateSeat(economySeat,flightId,passengercount,type);
+			        			//String type="Economy";
 			        			
-			        			System.out.println(seatupdate);
+			        			
+			        			
+			        			//seatupdate=seat.updateSeat(economySeat,flightId,passengercount,type);
+			        			
+			        			//System.out.println(seatupdate);
 			        			
 			        			
 			        		 
@@ -226,9 +237,9 @@ public class FlightDetailsController extends HttpServlet {
 			        		 
 			        		 
 
-			        	 }
+			        	 }*/
 
-			        	 else {
+			        	/* else {
 
 			        		 System.out.println("not updated");
 
@@ -238,6 +249,7 @@ public class FlightDetailsController extends HttpServlet {
 			        	 
 			        	 dispatch=request.getRequestDispatcher("views/reservebooksuccess.jsp");
 			        	 dispatch.forward(request, response);
+					}*/
 					}
 
 					else {

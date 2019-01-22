@@ -70,6 +70,8 @@ for(Ticket t:tlist){
                 <th>FlghtId</th>
                                 <th>EmailId</th>
                                 <th>Date</th>
+                                <th>cancel</th>
+                                <th>Book</th>
                                
                 
         
@@ -84,12 +86,13 @@ for(Ticket t:tlist){
      
      
      for(Ticket t:tlist) { %>
-     <form action="TicketDisplayController" method="post">
+     
      
       <tr class="table-danger">
          <td><%= t.getTicketId()%></td>
         <td><%=t.getPassengerCount() %></td>
                 <td><%=t.getPayment()%></td>
+                
                         <td><%=t.getStatus()%></td>
                         <% String flightId=t.getFlight().getFlightId();
                         
@@ -101,11 +104,51 @@ for(Ticket t:tlist){
                                                                  <td><%=emailId %></td>
                                                                  
                           <td><%=date %>
-                       <td>  <button type="submit" class="btn btn-lg btn-primary" name="cancel" value="cancel" >Cancel </button>  </td>                                   
-                                    
-                                
-                     
+                          
+                          <form action="TicketDisplayController" method="post">
+                       <td>  <button type="submit" class="btn btn-lg btn-primary" name="cancelticket" value="cancel" >Cancel </button>  </td>                                   
+                         
+                        
                 
+                <% if((t.getStatus().contains("PreBook")) || (t.getStatus().contains("Reserve")) ) { %>
+                
+                
+                                                         
+                <td>  <button type="submit" class="btn btn-lg btn-primary" name="Booked" value=<%=t.getTicketId() %>>Book</button>
+                                   
+                                         
+                                          </td>               
+                
+                
+                
+                <%} 
+                else { %>
+                  <td>  <button type="submit" class="btn btn-lg btn-primary"   name="bookticket" disabled value="bookticket" >Book </button>  </td> 
+                                                                            
+                
+                 <input type="hidden" name="flightid" value=<%=t.getFlight().getFlightId()%>>
+                                  <input type="hidden" name="ticketid" value=<%=t.getTicketId()%>>
+                                   <input type="hidden" name="ticketstatus" value=<%=t.getStatus()%>>
+                 
+				<input type="hidden" name="airlinename"
+					value=<%=t.getFlight().getAirlineName()%>> <input type="hidden"
+					name="source" value=<%=t.getFlight().getSource()%>> <input
+					type="hidden" name="destination" value=<%=t.getFlight().getDestination()%>>
+				<input type="hidden" name="date" value=<%=t.getFlight().getDate()%>> <input
+					type="hidden" name="departuretime" value=<%=t.getFlight().getDepartureTime()%>>
+				<input type="hidden" name="arrivaltime"
+					value=<%=t.getFlight().getArrivalTime()%>> <input type="hidden"
+					name="duration" value=<%=t.getFlight().getDuration()%>> <input
+					type="hidden" name="businessseat" value=<%=t.getFlight().getBusinessSeat()%>>
+				<input type="hidden" name="businessprice"
+					value=<%=t.getFlight().getBusinessPrice()%>> <input type="hidden"
+					name="economyseat" value=<%=t.getFlight().getEconomySeat()%>> <input
+					type="hidden" name="economyprice" value=<%=t.getFlight().getEconomyPrice()%>>
+                
+                
+                
+                
+                <%} %>
         
       </tr>
       </form>
