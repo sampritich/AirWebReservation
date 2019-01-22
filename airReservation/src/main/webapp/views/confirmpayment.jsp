@@ -13,7 +13,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
   <style>
 body {
-  background-color: #ffb200;
+
+	 background: url("img/bg-registration-form-9.jpg") no-repeat right center;
+	 background-size: cover;
+	  min-height: 100vh;
+  position: relative;
+
 }
 
 
@@ -38,16 +43,16 @@ float price=(Float)session.getAttribute("price");
 %>
 
 <center>
-<h1>Total Amount to pay</h2>
+<h1 style="color:white">Total Amount to pay</h2>
 </center>
 <br>
 <br>
 
-<div class="container">
+<div class="container" >
  
   <table class="table">
     <thead>
-      <tr>
+      <tr style="color:white">
         <th>Passenger</th>
         <th>Amount</th>
         <th>Total Amount</th>
@@ -76,4 +81,3 @@ float price=(Float)session.getAttribute("price");
 </form>
 </body>
 </html>
-

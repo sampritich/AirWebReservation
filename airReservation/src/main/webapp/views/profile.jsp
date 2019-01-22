@@ -23,8 +23,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
 <title>Booking Form HTML Template</title>
@@ -80,6 +79,129 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
 		<![endif]-->
+		<style type="text/css">
+		
+		
+		body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+    body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</style>
 
 
 
@@ -107,6 +229,26 @@
                         System.out.println(d);
 
 					%>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+        <a href='TicketDisplayController?profile=profile'>Profile Information</a>
+  
+  <a href='TicketDisplayController?profile=booking'>Your Booking details</a>
+  <a href='TicketDisplayController?profile=information'>Your Information</a>
+ <a href='TicketDisplayController?profile=cupons'>Cupons</a>
+
+  <a href="#">Contact</a>
+   <a href='TicketDisplayController?profile=cupons'>Logout</a>
+  
+ 
+</div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Profile</span>
+
+
+
+
+
 
 
 
@@ -255,7 +397,15 @@
 			</div>
 		</div>
 	</div>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
 
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
 
 </body>
 

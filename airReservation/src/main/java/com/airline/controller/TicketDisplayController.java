@@ -11,7 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import com.airline.bo.SeatBookBO;
 import com.airline.bo.TicketBO;
+import com.airline.bo.UserTicketDisplayBO;
 import com.airline.model.Ticket;
+import com.airline.model.User;
+import java.util.*;
 
 /**
  * Servlet implementation class TicketDisplayController
@@ -32,8 +35,40 @@ public class TicketDisplayController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session=request.getSession();
+		
+		RequestDispatcher dispatch=null;
+		String profile=request.getParameter("profile");
+		
+		System.out.println(profile);
+		if(profile.equals("booking")) {
+			
+			
+			User user=(User)session.getAttribute("user");
+			
+			
+			System.out.println(user.getEmailId());
+			
+			UserTicketDisplayBO userbo=new UserTicketDisplayBO();
+			
+			List<Ticket> ticket=userbo.ticketDisplay(user);
+			
+			for(Ticket t:ticket) {
+				
+				
+				//System.out.println(t.getContact()+"controller");
+				System.out.println(t.getTicketId()+"controller");
+				
+			}
+			session.setAttribute("userticketdetails", ticket);
+			dispatch=request.getRequestDispatcher("views/ticketdisplay.jsp");
+			dispatch.forward(request, response);
+			
+		}
+
 	}
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -50,6 +85,14 @@ public class TicketDisplayController extends HttpServlet {
 		String confirm=request.getParameter("checkoutconfirm");
 		
 		System.out.println(confirm);
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		if(request.getParameter("checkoutconfirm")!=null) {
 			
@@ -111,6 +154,10 @@ public class TicketDisplayController extends HttpServlet {
 			
 			
 		}
+		
+		
+		
+		
 	}
 
 }
