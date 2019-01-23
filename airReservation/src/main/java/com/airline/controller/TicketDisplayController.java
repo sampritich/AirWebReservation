@@ -236,7 +236,7 @@ System.out.println(ticket.getPassengerCount()+"ticketdisplaycontroller");
 					
 					
 					System.out.println("successfully booked");
-					
+					session.invalidate();
 					dispatch=request.getRequestDispatcher("views/bookingsuccess.jsp");
 					dispatch.forward(request, response);
 					

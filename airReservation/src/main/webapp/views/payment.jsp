@@ -111,6 +111,62 @@ span.price {
   }
 }
 </style>
+
+
+
+<script>
+
+function validate(){
+	
+	var status=false;
+	
+	var cardname=document.getElementById("cardname").value;
+	
+	var cardnumber=document.getElementById("cardnumber").value;
+	
+	var expmonth=document.getElementById("expmonth").value;
+	
+	var expyear=document.getElementById("expyear").value;
+	
+	var cvv=document.getElementById("cvv").value;
+	
+	if(cardname==""){
+		alert("name cant be empty");
+		
+	}
+	
+	else{
+		if(cardnumber.length<16 || isNaN(cardnumber)){
+			alert("enter valid card number");
+		}
+		else{
+			if(expmonth==""){
+				alert(" month cant be empty");
+			}
+			else{
+				if(expyear.length!=4 || isNaN(expyear)){
+					alert(" year cant be empty");
+				}
+				else{
+					
+					if(cvv.length<3 || cvv.length>3){
+					alert("enter correct cvv")
+					}
+					else{
+						status=true;
+					}
+					
+					
+					
+				}
+				
+			}
+		}
+	}
+	return status;
+}
+
+</script>
 </head>
 <body>
 <% Ticket t=(Ticket)session.getAttribute("ticket");
@@ -144,7 +200,7 @@ float price=(Float)session.getAttribute("price");
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="TicketDisplayController" method="post">
+      <form action="TicketDisplayController" method="post" onsubmit="return validate()">
       
         
           
@@ -158,9 +214,9 @@ float price=(Float)session.getAttribute("price");
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
             <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <input type="text"  name="cardname"  id="cardname"/>
             <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <input type="text"  name="cardnumber" id="cardnumber"/>
             <label for="expmonth">Exp Month</label>
             <input type="text" id="expmonth" name="expmonth" placeholder="September">
             <div class="row">

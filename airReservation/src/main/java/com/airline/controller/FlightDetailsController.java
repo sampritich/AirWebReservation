@@ -269,12 +269,19 @@ public class FlightDetailsController extends HttpServlet {
 					boolean status = bookingCheck.validatePrebooking(date);
 
 					if (status) {
+						
+                    session.setAttribute("ticket", ticket);
 
-						boolean bookingStatus=ticketBO.createTicket(ticket);
+						
+						dispatch=request.getRequestDispatcher("views/passenger.jsp");
+			        	 dispatch.forward(request, response);
+					}
+
+					//	boolean bookingStatus=ticketBO.createTicket(ticket);
 
 			        	 
 
-			        	 if(bookingStatus) {
+			        	/* if(bookingStatus) {
 
 			        		 System.out.println("successfully update");
 			        		 
@@ -313,7 +320,7 @@ public class FlightDetailsController extends HttpServlet {
 
 			        	 }
 
-					}
+					}*/
 
 					else {
 
