@@ -34,6 +34,18 @@
 	color: #fff;
 }
 </style>
+<script>
+
+function validate(){
+	
+	var countryname=document.getElementById("countryname");
+	
+	
+	
+	
+}
+
+</script>
 </head>
 
 <body>
@@ -45,7 +57,7 @@
 				<div class="form-row">
 					<div class="form-wrapper">
 						<label for=""> country that issued visa *</label> <input
-							type="text" class="form-control" name="countryname" placeholder="Country">
+							type="text" class="form-control" name="countryname"  id="countryname" placeholder="Country">
 					</div>
 					<div class="form-wrapper">
 						<label for="">Visa identity number(unique) *</label> <input

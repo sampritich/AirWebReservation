@@ -140,50 +140,79 @@ a {
 }
 </style>
 
-<script>
-function validForm() {
-	  var email = document.getElementById("email").value;
-	  var contact=document.getElementById("contact").value;
-	  var password=document.getElementById("password").value;
-	  var repassword=document.getElementById("confirmpassword").value;
-	  var status=false;
-	  if (email == "") {
-	    alert("email must be filled out");
-	    
-	  }
-	  else{
-	  
-	    
-	   		if(contact.length<10 || isNaN(contact)){
-		  		alert("please enter valid contact number");
-		  		
-	   }
-	   		else{
-	   			
-	   		if(!(password.length>=8))
+<script type="text/javascript">
+function SignUpValidation()
 {
-	   			alert("password must have 8 digit");
+	var password = document.getElementById("password").value;
+	var email = document.getElementById("email").value;
+	var confirmpassword = document.getElementById("confirmpassword").value;
+	var contact = document.getElementById("contact").value;
+	
+	var status = false;
+	var p=1;
+	var e=1;
+	var cp=1;
+	var c=1;
+	var match=1;
+	
+	if(email.length == 0)
+	{
+		alert("Email is Mandatory");
+	}
+	else
+	{
+		p=0;
+	}
+	if(contact.length == 0 )
+	{
+		alert("Contact is Mandatory");
+	}
+	else
+	{
+		c=0;
+	}
+	if(password.length == 0 )
+	{
+		alert("Password is Mandatory");
+	}
+	else if(password.length < 8)
+	{
+		alert("Password length must be 8 characters minimum");
+	}
+	else
+	{
+		e=0;
+	}
+	if(confirmpassword.length == 0 )
+	{
+		alert("Confirm Password is Mandatory");
+	}
+	else
+	{
+		cp=0;
+	}
+	
+	
+	if(confirmpassword == password)
+	{
+		match=0;
+	}
+	else
+	{
+		alert("Password Mismatch");
+	}
+	
+	if(e==0 && c==0 && p==0 && cp==0 && match==0)
+	{
+		status = true;
+	}
+	
+	return status;
+	
 }
-	   		else{
-	  		 
-	   			 if( password=="" || password!=repassword ){
-		  			alert("both password must be same");
-		  			status=false;
-	  }
-	 				 else{
-	 					 status=true;
-	 				 }
-	   		}
-	 					 }
-	  }
-	 				 
-	  				
-	
-	  
-	  return status;
-	
-	  }
-	</script>
+
+
+</script>
 
 
 </head>
@@ -197,12 +226,14 @@ function validForm() {
 		<div class="module">
 
 			<form method="post" class="form" action="CheckGuestController"
-				onsubmit="return validForm()">
+				onSubmit="return SignUpValidation()">
 
-				<input type="email" name="email" id="email" placeholder="Your Email"
-					class="textbox" /> <input type="text" name="contact" id="contact"
-					placeholder="Contact Number" class="textbox" /> <input
-					type="password" name="password" id="password"
+				<input type="email" name="email" id="email"  placeholder="Your Email"
+					class="textbox" /> 
+					<input type="text" name="contact" id="contact"
+					placeholder="Contact Number" class="textbox" /> 
+					<input
+					type="password" name="password"  id="password"
 					placeholder=" Your password" class="textbox" /> <input
 					type="password" name="confirmpassword" id="confirmpassword"
 					placeholder=" Re-enter Your password" class="textbox" /> <input

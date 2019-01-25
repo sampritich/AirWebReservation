@@ -70,6 +70,27 @@ public class TicketDisplayController extends HttpServlet {
 			dispatch.forward(request, response);
 			
 		}
+		else if(profile.equals("reserve")) {
+			User user=(User)session.getAttribute("user");
+			System.out.println(user.getEmailId());
+			UserTicketDisplayBO userbo=new UserTicketDisplayBO();
+			List<Ticket> ticket=userbo.ticketDisplay(user);
+			List<Ticket> newlist=new ArrayList<>();
+			for(Ticket t:ticket) {
+				System.out.println(t.getPassengerCount());
+				if(t.getStatus().contains("PreBook") || t.getStatus().contains("Reserve")) {
+					newlist.add(t);
+				}
+			}
+			for(Ticket t1:newlist) {
+				System.out.println(t1.getPassengerCount());
+				System.out.println(t1.getFlight().getAirlineName());
+			}
+			
+			session.setAttribute("reservationlist", newlist);
+			dispatch=request.getRequestDispatcher("views/reservationlist.jsp");
+			dispatch.forward(request, response);
+		}
 		else if(profile.equals("logout")) {
 			
 			session.invalidate();
@@ -207,6 +228,43 @@ System.out.println(ticket.getPassengerCount()+"ticketdisplaycontroller");
 			System.out.println(tstatus);
 			
 			if(tstatus.contains("Reserve")) {
+				System.out.println("yes");
+				TicketBO ticketbo=new TicketBO();
+				boolean updateStatus=ticketbo.updateTicketStatus(tstatus, ticket.getTicketId(),ticket.getPayment());
+				if(updateStatus) {
+					System.out.println(updateStatus+"controller");
+					boolean seatUp=false;
+					SeatBookBO seat=new SeatBookBO();
+					if(ticket.getStatus().contains("Economy")) {
+		     			System.out.println(ticket.getStatus()); 
+		     			
+		     			String type="Economy";
+		     			seatUp=seat.updateSeat(ticket.getFlight().getEconomySeat(),ticket.getFlight().getFlightId(),ticket.getPassengerCount(),type);
+		     			
+		     			System.out.println(seatUp);
+		     			
+		     			
+		     		 
+		     		 }
+		     		 else {
+		     			 
+		     			 String type="Business";
+		     			seatUp=seat.updateSeat(ticket.getFlight().getBusinessSeat(), ticket.getFlight().getFlightId(),ticket.getPassengerCount(),type);
+		     			 
+		     			 System.out.println(seatUp);
+		     			 
+		     		 }
+					
+					
+					System.out.println("successfully booked");
+					session.invalidate();
+					dispatch=request.getRequestDispatcher("views/bookingsuccess.jsp");
+					dispatch.forward(request, response);
+					
+				}
+				
+			}
+			else if(tstatus.contains("PreBook ")) {
 				System.out.println("yes");
 				TicketBO ticketbo=new TicketBO();
 				boolean updateStatus=ticketbo.updateTicketStatus(tstatus, ticket.getTicketId(),ticket.getPayment());

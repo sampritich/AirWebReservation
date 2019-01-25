@@ -191,11 +191,24 @@ public class TicketGenerateController extends HttpServlet {
 				dispatch=request.getRequestDispatcher("views/reservebooksuccess.jsp");
 				dispatch.forward(request, response);
 			}
+			
+				else {
+					System.out.println("not updated");
+				}
+			}
+			if(ticket.getStatus().contains("PreBook")) {
+				TicketBO ticketBO=new TicketBO();
+				boolean bookingStatus=ticketBO.createTicket(ticket);
+				System.out.println(ticket.getStatus());
+				if(bookingStatus) {
+				dispatch=request.getRequestDispatcher("views/reservebooksuccess.jsp");
+				dispatch.forward(request, response);
+				
 			}
 				else {
 					System.out.println("not updated");
 				}
-			
+			}
 			float payment = (Float) session.getAttribute("price");
 			float actualPayment = payment*passenger;
 			System.out.println(actualPayment);

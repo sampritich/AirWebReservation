@@ -202,6 +202,48 @@ span.psw {
 		
 		
 		</style>
+		<script type="text/javascript">
+		
+		
+		function searchValidation()
+		{
+			
+			var source = document.getElementById("source").value;
+			var destination = document.getElementById("destination").value;
+			var status = false;
+			var s=1;
+			var d=1;
+			if(source == "Select")
+			{
+				alert("Source is Mandatory");
+			}
+			else
+			{
+				s=0;
+			}
+			if( destination == "Select" )
+			{
+				alert("Destination is Mandatory");
+			}
+			else
+			{
+				d=0;
+			}
+			
+			if(s==0 && d==0)
+			{
+				status = true;
+			}
+			
+			return status;
+		}
+		
+		
+		
+		
+		
+		
+		</script>
 
 
 
@@ -236,7 +278,9 @@ span.psw {
   
   <a href='TicketDisplayController?profile=booking'>Your Booking details</a>
   <a href='TicketDisplayController?profile=information'>Your Information</a>
- <a href='TicketDisplayController?profile=cupons'>Cupons</a>
+    <a href='TicketDisplayController?profile=reserve'>Your Reserve Ticket Information</a>
+  
+ <a href='TicketDisplayController?profile=cupons'>Coupons</a>
 
   <a href="#">Contact</a>
    <a href='TicketDisplayController?profile=logout'>Logout</a>
@@ -266,7 +310,7 @@ span.psw {
 
 					<div class="booking-form">
 
-						<form action="FlightController" method="post">
+						<form action="FlightController" method="post" onsubmit="return searchValidation()">
 						
 					<%if(user!=null){ %>	
 						
